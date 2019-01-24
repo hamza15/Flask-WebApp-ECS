@@ -10,12 +10,11 @@ phases:
 
   build:
     commands:
-      - echo Run unit test
-      - docker-compose run web python test_basic.py
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t anagram .
-      - docker tag anagram:latest 764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram:latest      
+      - docker tag anagram:latest 764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram:latest 
+      
   post_build:
     commands:
       - echo Build completed on `date`
