@@ -50,5 +50,5 @@ Once the prerequisites have been deployed, we can build our Continuous Deploymen
 
 
 
-Once yourpipeline kicks off and all the stages succeed, you should be able to hit the load balancer from your web browser and see your Anagram-Web-App up and running. 
+### Once your pipeline kicks off and all the stages succeed, you should be able to hit the load balancer from your web browser and see your Anagram-Web-App up and running. 
 
