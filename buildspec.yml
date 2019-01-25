@@ -7,7 +7,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - echo 'aws --version'
       - $(aws ecr get-login --no-include-email --region us-east-1)
-      - REPOSITORY_URI=7764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram
+      - REPOSITORY_URI=764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}  
 
@@ -22,7 +22,6 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - eval $(aws ecr get-login --no-include-email --region us-east-1 | sed 's|https://||')
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
