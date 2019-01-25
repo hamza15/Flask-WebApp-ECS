@@ -22,7 +22,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - eval $(aws ecr get-login --no-include-email --region us-east-1 | sed 's|https://||')
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
