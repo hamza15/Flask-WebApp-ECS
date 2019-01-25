@@ -7,18 +7,24 @@ phases:
       - echo Logging in to Amazon ECR...
       - echo 'aws --version'
       - $(aws ecr get-login --no-include-email --region us-east-1)
+      - REPOSITORY_URI=764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}      
 
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t anagram .
-      - docker tag anagram:latest 764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram:latest 
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG 
       
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 764784637549.dkr.ecr.us-east-1.amazonaws.com/anagram:latest
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"anagram","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
   artifacts:
     files: imagedefinitions.json    
