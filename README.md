@@ -6,7 +6,7 @@ AWS IAM roles according to the services you provision. AWS has a detailed explan
 [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/IAM_policies.html).*
 
 
-##Prerequisites
+## Prerequisites
 
 * Create a Docker image repository inside AWS ECR. This repo is where you will be pushing your new image into everytime new
 code is committed in your github repo. 
@@ -36,4 +36,4 @@ code is committed in your github repo.
   }
 }
 ```
-
+* Create an ECS cluster and an ECS Service which consumes the task definition you just created in the previous step. 
