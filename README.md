@@ -8,12 +8,12 @@ AWS IAM roles according to the services you provision. AWS has a detailed explan
 
 ##Prerequisites
 
-..* Create a Docker image repository inside AWS ECR. This repo is where you will be pushing your new image into everytime new
+* Create a Docker image repository inside AWS ECR. This repo is where you will be pushing your new image into everytime new
 code is committed in your github repo. 
 
-..* Create an ECS task definition that references your Docker image in ECS. The following is how your task definition should look:
+* Create an ECS task definition that references your Docker image in ECS. The following is how your task definition should look:
 
-'''json
+```json
 {
   "taskDefinition": {
     "family": "Anagram",
@@ -35,4 +35,5 @@ code is committed in your github repo.
     ]
   }
 }
-'''
+```
+
