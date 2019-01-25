@@ -12,7 +12,8 @@ AWS IAM roles according to the services you provision. AWS has a detailed explan
 code is committed in your github repo. 
 
 ..* Create an ECS task definition that references your Docker image in ECS. The following is how your task definition should look:
-  > {
+
+{
   "taskDefinition": {
     "family": "Anagram",
     "containerDefinitions": [
