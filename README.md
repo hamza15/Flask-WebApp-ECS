@@ -13,6 +13,7 @@ code is committed in your github repo.
 
 ..* Create an ECS task definition that references your Docker image in ECS. The following is how your task definition should look:
 
+'''json
 {
   "taskDefinition": {
     "family": "Anagram",
@@ -34,4 +35,4 @@ code is committed in your github repo.
     ]
   }
 }
-
+'''
