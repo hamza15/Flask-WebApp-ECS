@@ -31,17 +31,20 @@ li a {
     font-size: 32px;
     font-family: lobster;
   }
+
+body {
+    background:#c6faf1;
+  }   
 </style>
 
-{% block content %}
 <body1>
   <ul>
     <li><a class="lobster">Anagram Solver</a></li>
    </ul> 
 </body1>   
 
-
-
+{% block content %}
+<body>
 <form method="post">
     <div class="pad">
         <p>
@@ -61,5 +64,5 @@ li a {
         <a href="{{ url_for('index') }}">Another Anagram</a>
     </div>
 </form>
-
+</body>
 {% endblock content %} 
