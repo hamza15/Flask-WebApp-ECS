@@ -23,6 +23,9 @@ li a {
   text-decoration: none;
 }
 
+.pad {
+    padding-left: 80px;
+}
 
 .lobster {
     font-size: 32px;
@@ -30,24 +33,33 @@ li a {
   }
 </style>
 
+{% block content %}
 <body1>
   <ul>
     <li><a class="lobster">Anagram Solver</a></li>
    </ul> 
-</body1> 
+</body1>   
+
 
 
 <form method="post">
-    <div>
+    <div class="pad">
         <p>
                 Your anagrams are: <br>
-                {% for word in myWords %}
-                    {{ word.upper() }}
-                    <br>
-                {% endfor %}
+                {% if not myWords %} 
+                    <b>Come on, that's not a word!</b>  
+                {% else %}                 
+                    {% for word in myWords %}
+                        {{ word.upper() }}
+                        <br>
+                    {% endfor %}
+                {% endif %}    
+               
         </p>
     </div>
     <div>
         <a href="{{ url_for('index') }}">Another Anagram</a>
     </div>
 </form>
+
+{% endblock content %} 
