@@ -3,6 +3,10 @@
 
 <style>
 
+.body-align{
+  text-align: center
+}
+  
 ul {
   list-style-type: none;
   margin: 0;
@@ -48,9 +52,9 @@ body {
 <form method="post">
     <div class="pad">
         <p>
-                Your anagrams are: <br>
+               <b>Your anagrams are:<b> <br>
                 {% if not myWords %} 
-                    <b>Come on, that's not a word!</b>  
+                    Come on, that's not a word!  
                 {% else %}                 
                     {% for word in myWords %}
                         {{ word.upper() }}
